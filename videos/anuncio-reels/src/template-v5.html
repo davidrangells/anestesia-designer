@@ -1,0 +1,207 @@
+<meta charset="utf-8">
+<title>Anestesia Questões · Anúncio Reels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+<style>
+:root{--ink:#071226;--ink2:#0E1F3D;--ink3:#182F57;--on:#fff;--dim:#9DB0CF;--blue:#2A6DF4;--blue2:#6AA8FF;--indigo:#4F46E5;--mon:#34D399;--rose:#FB7185;
+--font:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+--img-home:url(__HOME__);--img-hoje:url(__HOJE__);--img-cad:url(__CAD2__);--k:1.918}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#040B18;color:var(--on);font-family:var(--font);height:100%}
+body{display:flex;flex-direction:column;align-items:center;gap:18px;padding:18px;min-height:100vh}
+body.render{padding:0;gap:0;display:block;background:var(--ink);overflow:hidden}
+#wrap{position:relative;width:1080px;height:1920px;transform-origin:top left;flex:none}
+#stage{position:absolute;inset:0;overflow:hidden;background:var(--ink);border-radius:36px}
+body.render #stage{border-radius:0}
+.bg{position:absolute;inset:-12%;background:radial-gradient(55% 40% at 15% 12%,rgba(79,70,229,.30),transparent 70%),radial-gradient(50% 38% at 92% 78%,rgba(42,109,244,.22),transparent 70%);animation:bgdrift 30.4s ease-in-out 0s both}
+@keyframes bgdrift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-3%,2%) scale(1.07)}100%{transform:translate(2%,-2%) scale(1.03)}}
+.grain{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:108px 108px;mask-image:radial-gradient(75% 60% at 50% 42%,#000 25%,transparent 100%)}
+.scene{position:absolute;inset:0;visibility:hidden;opacity:0;animation:show var(--len) linear var(--d) none}
+@keyframes show{0%{visibility:visible;opacity:0}3%{opacity:1}97%{opacity:1}100%{visibility:visible;opacity:0}}
+.scene.last{animation-name:showlast}@keyframes showlast{0%{visibility:visible;opacity:0}3%{opacity:1}100%{visibility:visible;opacity:1}}
+.cam{position:absolute;inset:0;animation:cam var(--len) linear var(--d) both;transform-origin:50% 40%}
+@keyframes cam{from{transform:scale(1)}to{transform:scale(1.05)}}
+.in{animation:rise 560ms cubic-bezier(.2,.75,.2,1) var(--d) both}
+@keyframes rise{from{opacity:0;transform:translateY(38px)}to{opacity:1;transform:none}}
+.hold{animation:hold var(--len) cubic-bezier(.2,.75,.2,1) var(--d) both}
+@keyframes hold{0%{opacity:0;transform:translateY(30px)}8%{opacity:1;transform:none}90%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-18px)}}
+.cut{animation:cut var(--len) steps(1,end) var(--d) both}
+@keyframes cut{0%{opacity:1}99%{opacity:1}100%{opacity:0}}
+.cut>*{animation:slam 420ms cubic-bezier(.15,.85,.2,1) var(--d) both}
+@keyframes slam{from{transform:scale(1.12);opacity:0;filter:blur(8px)}to{transform:none;opacity:1;filter:none}}
+.abs{position:absolute;left:88px;right:88px}
+.num{font-variant-numeric:tabular-nums}
+/* marca fixa */
+.bug{position:absolute;left:88px;top:282px;display:flex;align-items:center;gap:14px;font-size:27px;font-weight:700;letter-spacing:-.01em;color:#DCE6F7;animation:bug 22946ms linear 300ms both}
+.bug img{width:54px}
+@keyframes bug{0%{opacity:0}2%{opacity:1}98%{opacity:1}100%{opacity:0}}
+/* S1 */
+.s1a{top:400px;font-size:58px;font-weight:700;color:var(--dim);letter-spacing:-.02em}
+.s1n{top:450px;display:flex;align-items:baseline;gap:20px}
+.s1n b{font-size:400px;font-weight:800;letter-spacing:-.07em;line-height:1}
+.s1n span{font-size:130px;font-weight:800;color:var(--mon);letter-spacing:-.03em}
+.s1b{top:860px;font-size:58px;font-weight:700;color:var(--dim);letter-spacing:-.02em}
+.s1q{top:1010px;font-size:112px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.ecg{position:absolute;left:0;width:1080px;height:220px;overflow:visible}
+.ecg path{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:3200;stroke-dashoffset:3200;animation:draw var(--len) linear var(--d) both}
+@keyframes draw{to{stroke-dashoffset:0}}
+/* S2 */
+.ask{top:560px;font-size:104px;font-weight:800;letter-spacing:-.04em;line-height:1.02;text-wrap:balance}
+.ask small{display:block;font-size:34px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rose);margin-bottom:26px}
+.punch{top:520px;font-size:118px;font-weight:800;letter-spacing:-.045em;line-height:1}
+.punch em{font-style:normal;color:var(--rose);position:relative;display:inline-block}
+.punch em::after{content:'';position:absolute;left:0;right:0;bottom:-10px;height:8px;border-radius:4px;background:var(--rose);transform-origin:left;animation:ul 500ms cubic-bezier(.2,.8,.2,1) 6056ms both}
+@keyframes ul{from{transform:scaleX(0)}to{transform:none}}
+/* legenda das cenas de produto */
+.cap{top:372px;font-size:76px;font-weight:800;letter-spacing:-.035em;line-height:1.04;text-wrap:balance}
+.cap i{font-style:normal;color:var(--blue2)}
+/* telefone */
+.phone{position:absolute;left:50%;top:600px;width:780px;height:1560px;margin-left:-390px;background:#050B17;border-radius:92px;padding:16px;box-shadow:0 70px 140px rgba(0,0,0,.6),inset 0 0 0 3px #26375A,0 0 0 2px #050B17}
+.phone::before{content:'';position:absolute;left:50%;top:34px;margin-left:-110px;width:220px;height:46px;background:#050B17;border-radius:24px;z-index:5}
+.screen{position:relative;width:748px;height:100%;border-radius:78px;overflow:hidden;background:#F1F5F9}
+.enter{animation:enter 1100ms cubic-bezier(.16,.84,.2,1) var(--d) both}
+@keyframes enter{from{opacity:0;transform:translateY(260px) scale(.9) rotateX(14deg)}to{opacity:1;transform:none}}
+.push{animation:enter 1100ms cubic-bezier(.16,.84,.2,1) var(--d) both,push 8000ms cubic-bezier(.3,0,.2,1) 10881ms both}
+@keyframes push{0%{scale:1}100%{scale:1.06}}
+.pane{position:absolute;inset:0;background-repeat:no-repeat;background-size:748px auto;animation-fill-mode:both;animation-timing-function:cubic-bezier(.45,0,.15,1)}
+.pane.hoje{background-image:var(--img-hoje);animation:ph 6328ms cubic-bezier(.45,0,.15,1) 8681ms both}
+/* posições = -(css y * 1.918) */
+@keyframes ph{0%,37.9%{background-position:0 -211px;transform:none}50.6%,92.9%{background-position:0 -830px;transform:none}100%{background-position:0 -830px;transform:translateX(-100%)}}
+.pane.cad{background-image:var(--img-cad);animation:pc 2267ms cubic-bezier(.45,0,.15,1) 14559ms both}
+@keyframes pc{0%{transform:translateX(100%);background-position:0 -500px}12%,40%{transform:none;background-position:0 -500px}62%,90%{transform:none;background-position:0 -1360px}100%{transform:translateX(-100%);background-position:0 -1360px}}
+.pane.home{background-image:var(--img-home);animation:pm 1591ms cubic-bezier(.45,0,.15,1) 16376ms both}
+@keyframes pm{0%{transform:translateX(100%);background-position:0 -560px}12%,35%{transform:none;background-position:0 -560px}64%,100%{transform:none;background-position:0 -1590px}}
+.stat{position:absolute;left:0;right:0;top:0;height:44px;z-index:4}
+/* destaques ampliados */
+.call{position:absolute;background-repeat:no-repeat;border-radius:28px;box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 3px rgba(255,255,255,.9);animation:call var(--len) cubic-bezier(.2,.85,.2,1) var(--d) both;z-index:8}
+@keyframes call{0%{opacity:0;transform:translateY(30px) scale(.8)}12%{opacity:1;transform:none}88%{opacity:1;transform:none}100%{opacity:0;transform:scale(.92)}}
+.tagline{position:absolute;font-size:24px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--mon);padding:10px 18px;border-radius:999px;z-index:9;animation:call var(--len) cubic-bezier(.2,.85,.2,1) var(--d) both}
+/* S5 prova */
+.pr{display:flex;align-items:baseline;gap:26px;border-top:2px solid rgba(255,255,255,.14);padding-top:30px}
+.pr .v{font-size:190px;font-weight:800;letter-spacing:-.06em;line-height:.95;padding-right:.08em;flex:none}
+.pr .l{font-size:40px;font-weight:700;color:var(--blue2);line-height:1.15;letter-spacing:-.01em}
+@property --n{syntax:'<integer>';inherits:false;initial-value:0}
+.c20{counter-reset:c var(--n);animation:c20 900ms cubic-bezier(.2,.7,.2,1) var(--d) both}.c20::after{content:counter(c)}@keyframes c20{from{--n:0}to{--n:20}}
+.c100{counter-reset:c var(--n);animation:c100 900ms cubic-bezier(.2,.7,.2,1) var(--d) both}.c100::after{content:counter(c) '%'}@keyframes c100{from{--n:0}to{--n:100}}
+.wipe{clip-path:inset(0 100% 0 0);animation:wipe 600ms cubic-bezier(.2,.75,.2,1) var(--d) both}@keyframes wipe{to{clip-path:inset(0 0 0 0)}}
+.exams{display:flex;gap:14px}.exams span{font-size:38px;font-weight:800;padding:12px 30px;border-radius:999px;border:3px solid var(--blue)}
+/* S6 */
+.close1{top:380px;font-size:92px;font-weight:800;letter-spacing:-.04em;line-height:1.02}
+.brand{top:640px;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.brand img{width:230px}
+.brand .w{font-size:88px;font-weight:800;letter-spacing:-.035em}
+.guar{font-size:46px;font-weight:800;color:#fff;margin-top:34px;letter-spacing:-.02em}.guar small{display:block;font-size:32px;font-weight:600;color:var(--dim);margin-top:8px;letter-spacing:0}.guar u{text-decoration:none;color:var(--mon)}
+.guar b{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--mon);color:var(--ink);font-size:28px}
+.cta{margin-top:44px;display:inline-flex;align-items:center;gap:18px;background:linear-gradient(90deg,#4F46E5,#2A6DF4);color:#fff;font-size:56px;font-weight:800;padding:40px 96px;border-radius:999px;box-shadow:0 26px 70px rgba(42,109,244,.5);animation:rise 560ms cubic-bezier(.2,.75,.2,1) var(--d) both,beat 1400ms ease-in-out calc(var(--d) + 700ms) infinite}
+@keyframes beat{50%{transform:scale(1.035)}}
+.url{font-size:34px;font-weight:700;color:var(--dim);margin-top:22px}
+/* controles */
+#ctl{width:min(1080px,100%);color:#C9D6EA;display:flex;flex-direction:column;gap:12px;font-size:14px}
+#ctl .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#ctl button,#ctl label{font:inherit;font-weight:700;background:#132845;color:#fff;border:1px solid #24405f;border-radius:10px;padding:10px 16px;cursor:pointer}
+#ctl button:focus-visible{outline:2px solid var(--blue2);outline-offset:2px}
+#ctl input[type=range]{flex:1;min-width:200px;accent-color:var(--blue)}
+#ctl .scenes{display:flex;gap:6px;flex-wrap:wrap}#ctl .scenes button{padding:6px 10px;font-size:12px;font-weight:600;background:transparent}#ctl .scenes button.on{background:var(--blue);border-color:var(--blue)}
+#ctl .t{font-variant-numeric:tabular-nums;min-width:110px}
+.safe{position:absolute;inset:0;pointer-events:none;z-index:50}
+.safe::before{content:'topo 14%';position:absolute;left:0;right:0;top:0;height:269px;background:rgba(251,113,133,.18);border-bottom:2px dashed var(--rose);font-size:22px;padding:10px}
+.safe::after{content:'base 35% (interface do Reels)';position:absolute;left:0;right:0;bottom:0;height:672px;background:rgba(251,113,133,.18);border-top:2px dashed var(--rose);font-size:22px;padding:10px}
+body.render #ctl{display:none}
+</style>
+
+<div id="wrap"><div id="stage">
+<div class="bg"></div><div class="grain"></div>
+<div class="bug"><img src="__LOGO__" alt="">Anestesia Questões</div>
+
+<!-- S1 · GANCHO 0–3.2 -->
+<section class="scene" style="--d:0ms;--len:3565ms"><div class="cam" style="--d:0ms;--len:3565ms">
+  <div class="abs s1a in" style="--d:80ms">Você tem</div>
+  <div class="abs s1n in" style="--d:160ms"><b class="num">40</b><span>min</span></div>
+  <div class="abs s1b in" style="--d:500ms">entre um plantão e outro.</div>
+  <div class="abs s1q in" style="--d:2474ms">O que você<br>estuda?</div>
+  <svg class="ecg" style="top:1300px" viewBox="0 0 1080 220"><path stroke="#34D399" style="--d:100ms;--len:3365ms" d="M0 130 H150 l14 -12 l14 12 h40 l16 22 l24 -130 l26 150 l18 -42 h60 q20 -34 44 0 H560 l14 -12 l14 12 h40 l16 22 l24 -130 l26 150 l18 -42 h60 q20 -34 44 0 H1080"/></svg>
+</div></section>
+
+<!-- S2 · DOR 3.2–7.4 -->
+<section class="scene" style="--d:3565ms;--len:5016ms">
+  <div class="abs ask cut" style="--d:3530ms;--len:1191ms"><div><small>Opção 1</small>Revisar o que<br>você já sabe?</div></div>
+  <div class="abs ask cut" style="--d:4721ms;--len:849ms"><div><small>Opção 2</small>Abrir um livro<br>na página 1?</div></div>
+  <div class="abs punch in" style="--d:5506ms">Estudar sem<br>direção<br><em>custa pontos.</em></div>
+  <svg class="ecg" style="top:1300px" viewBox="0 0 1080 220"><path stroke="#FB7185" style="--d:3615ms;--len:1841ms" d="M0 130 h60 l12 20 l18 -120 l20 140 l14 -40 h40 l12 20 l18 -130 l20 150 l14 -40 h30 l12 20 l18 -110 l20 130 l14 -40 h36 l12 20 l18 -130 l20 150 l14 -40 h30 l12 20 l18 -120 l20 140 l14 -40 h34 l12 20 l18 -130 l20 150 l14 -40 h30 l12 20 l18 -110 l20 130 l14 -40 H1080"/></svg>
+</section>
+
+<!-- S3+S4 · VIRADA + PRODUTO 7.4–19.6 -->
+<section class="scene" style="--d:8581ms;--len:9386ms">
+  <div class="abs cap hold" style="--d:8581ms;--len:2800ms">O app já montou<br>seus <i>40 minutos.</i></div>
+  <div class="abs cap hold" style="--d:11381ms;--len:3628ms">Questão, flashcards<br>e erros <i>na ordem certa.</i></div>
+  <div class="abs cap hold" style="--d:15009ms;--len:1717ms">Cada erro volta<br><i>comentado.</i></div>
+  <div class="abs cap hold" style="--d:16726ms;--len:1241ms">E você vê onde<br><i>perde pontos.</i></div>
+
+  <div class="phone push" style="--d:8681ms"><div class="screen">
+    <div class="pane home"></div><div class="pane cad"></div><div class="pane hoje"></div>
+  </div></div>
+
+  <!-- destaque 1: "4 blocos · ~40 min estimados" (hoje 16,255 → recorte 24,262 260×60 a 3.1x) -->
+  <div class="call" style="--d:9481ms;--len:1700ms;left:120px;top:1010px;width:806px;height:186px;background-image:var(--img-hoje);background-size:1209px auto;background-position:-74px -812px"></div>
+  <div class="tagline" style="--d:9681ms;--len:1500ms;left:150px;top:975px">Plano pronto</div>
+  <!-- destaque 2: selo "Errou 4×" (caderno 33,385 57×19 → recorte 26,378 72×33 a 6x) -->
+  <div class="call" style="--d:15409ms;--len:1400ms;left:520px;top:1040px;width:426px;height:198px;background-image:var(--img-cad);background-size:2340px auto;background-position:-1110px -2112px"></div>
+</section>
+
+<!-- S4c · onde perde pontos: reaproveita o telefone (home) 15.7–19.4 está na cena acima -->
+
+<!-- S5 · PROVA 19.6–23.2 -->
+<section class="scene" style="--d:17967ms;--len:5279ms"><div class="cam" style="--d:17967ms;--len:5279ms">
+  <div class="abs" style="top:380px;display:flex;flex-direction:column;gap:34px">
+    <div class="pr in" style="--d:18117ms"><div class="v num wipe" style="--d:18217ms">+3.500</div><div class="l">questões<br>de prova</div></div>
+    <div class="pr in" style="--d:20837ms"><div class="v num c100" style="--d:20937ms"></div><div class="l">comentadas por<br>anestesiologistas</div></div>
+    <div class="pr in" style="--d:20772ms"><div class="v num c20" style="--d:20872ms"></div><div class="l">anos de provas<div class="exams" style="margin-top:16px"><span>ME</span><span>TEA</span><span>TSA</span></div></div></div>
+  </div>
+</div></section>
+
+<!-- S6 · FECHAMENTO 23.2–28 -->
+<section class="scene last" style="--d:23246ms;--len:7180ms">
+  <div class="abs close1 hold" style="--d:23346ms;--len:2226ms">Seu tempo é curto.<br><span style="color:var(--blue2)">Seu estudo não precisa ser aleatório.</span></div>
+  <div class="abs brand" style="top:420px">
+    <img class="in" style="--d:25722ms" src="__LOGO__" alt="">
+    <div class="w in" style="--d:25872ms">Anestesia Questões</div>
+    <div class="guar in" style="--d:27080ms"><u>7 dias</u> de garantia</div>
+    <div class="cta" style="--d:28533ms">Assine agora</div>
+    <div class="url in" style="--d:28883ms">anestesiaquestoes.com.br</div>
+  </div>
+  <svg class="ecg" style="top:1300px" viewBox="0 0 1080 220"><path stroke="#6AA8FF" style="--d:25722ms;--len:4404ms" d="M0 130 H150 l14 -12 l14 12 h40 l16 22 l24 -130 l26 150 l18 -42 h60 q20 -34 44 0 H560 l14 -12 l14 12 h40 l16 22 l24 -130 l26 150 l18 -42 h60 q20 -34 44 0 H1080"/></svg>
+</section>
+<div class="safe" id="safe" hidden></div>
+</div></div>
+
+<div id="ctl">
+  <div class="row"><button id="play">Pausar</button><button id="restart">Reiniciar</button>
+    <input id="scrub" type="range" min="0" max="30426" value="0" step="50" aria-label="Posição"><span class="t" id="time">0.0 s / 30.4 s</span>
+    <button id="safebtn">Zonas seguras do Reels</button></div>
+  <div class="scenes" id="scenes"></div>
+  <div>Prévia sem áudio. O MP4 final tem narração e trilha. Os controles não entram no vídeo.</div>
+</div>
+<script>
+const TOTAL=30426,q=new URLSearchParams(location.search),render=q.has('render');
+if(render)document.body.classList.add('render');
+const anims=()=>document.getAnimations();let playing=true;
+function seekAll(t){anims().forEach(a=>{a.currentTime=t;});}
+function pause(){anims().forEach(a=>a.pause());playing=false;}
+function play(){anims().forEach(a=>a.play());playing=true;}
+window.seek=t=>{pause();seekAll(t);};window.__ready=false;
+Promise.all([document.fonts.ready,document.fonts.load('800 100px "Plus Jakarta Sans"')]).then(()=>{window.__ready=true;});
+if(!render){
+  const fit=()=>{const w=document.getElementById('wrap');const s=Math.min((innerWidth-36)/1080,(innerHeight-170)/1920);w.style.transform=`scale(${s})`;w.style.marginBottom=(1920*s-1920)+'px';w.style.marginRight=(1080*s-1080)+'px';};
+  fit();addEventListener('resize',fit);
+  const names=['Gancho','Dor','Virada','Plano do dia','Erro comentado','Onde perde pontos','Prova','Fechamento'],starts=[0,3565,8581,11381,15009,16726,17967,23246];
+  const sc=document.getElementById('scenes');
+  names.forEach((n,i)=>{const b=document.createElement('button');b.textContent=`${i+1} · ${n}`;b.onclick=()=>{seekAll(starts[i]);if(!playing)play();};sc.appendChild(b);});
+  const scrub=document.getElementById('scrub'),time=document.getElementById('time'),playBtn=document.getElementById('play');
+  playBtn.onclick=()=>{playing?pause():play();playBtn.textContent=playing?'Pausar':'Tocar';};
+  document.getElementById('restart').onclick=()=>{seekAll(0);play();playBtn.textContent='Pausar';};
+  document.getElementById('safebtn').onclick=()=>{const s=document.getElementById('safe');s.hidden=!s.hidden;};
+  scrub.oninput=()=>{pause();seekAll(+scrub.value);playBtn.textContent='Tocar';};
+  const first=()=>anims().find(a=>a.effect&&a.effect.target&&a.effect.target.classList.contains('bg'));
+  setInterval(()=>{const a=first();if(!a)return;let t=a.currentTime||0;if(t>=TOTAL+1500&&playing){seekAll(0);}scrub.value=Math.min(t,TOTAL);time.textContent=(Math.min(t,TOTAL)/1000).toFixed(1)+' s / 30.4 s';[...sc.children].forEach((b,i)=>b.classList.toggle('on',t>=starts[i]&&(i===starts.length-1||t<starts[i+1])));},100);
+}
+</script>

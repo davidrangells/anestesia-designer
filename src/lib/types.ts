@@ -1,7 +1,7 @@
 export type Role = "admin" | "aprovador" | "produtor";
 export type Status = "rascunho" | "revisao" | "ajustar" | "aprovado" | "publicado";
 export type Kind = "carrossel" | "post" | "reel" | "story";
-export type Family = "D" | "L" | "G";
+export type Family = "D" | "L" | "G" | "F";
 
 export type Slide = { name: string; path: string; url: string };
 
@@ -59,6 +59,6 @@ export const KIND_LABEL: Record<Kind, string> = {
   story: "Story",
 };
 
-export const FAMILY_LABEL: Record<Family, string> = { D: "Escura", L: "Clara", G: "Gradiente" };
+export const FAMILY_LABEL: Record<Family, string> = { D: "Escura", L: "Clara", G: "Gradiente", F: "Foto" };
 
 export const BOOTSTRAP_ADMINS = ["davidrangel01@gmail.com"];
