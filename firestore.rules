@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Admins de bootstrap: entram mesmo antes de existir o doc em users/.
+    function bootstrapAdmins() { return ['davidrangel01@gmail.com']; }
+    function email() { return request.auth.token.email; }
+    function signed() { return request.auth != null && request.auth.token.email_verified == true; }
+    function userDoc() { return get(/databases/$(database)/documents/users/$(email())); }
+    function isBootstrap() { return signed() && email() in bootstrapAdmins(); }
+    function isMember() { return isBootstrap() || (signed() && exists(/databases/$(database)/documents/users/$(email()))); }
+    function role() { return isBootstrap() ? 'admin' : userDoc().data.role; }
+    function isAdmin() { return isMember() && role() == 'admin'; }
+    function canApprove() { return isMember() && role() in ['admin', 'aprovador']; }
+
+    match /users/{userEmail} {
+      allow read: if isMember();
+      allow write: if isAdmin();
+    }
+
+    match /posts/{postId} {
+      allow read: if isMember();
+      allow create: if isMember() && request.resource.data.createdBy == email();
+      // Só aprovador/admin pode colocar em "aprovado" ou "publicado".
+      allow update: if isMember() && (
+        canApprove() ||
+        !(request.resource.data.status in ['aprovado', 'publicado']) ||
+        request.resource.data.status == resource.data.status
+      );
+      allow delete: if isAdmin();
+
+      match /comments/{commentId} {
+        allow read: if isMember();
+        allow create: if isMember() && request.resource.data.authorEmail == email();
+        allow update: if isMember() && (resource.data.authorEmail == email() || canApprove());
+        allow delete: if isMember() && (resource.data.authorEmail == email() || isAdmin());
+      }
+    }
+  }
+}

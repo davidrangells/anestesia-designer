@@ -1,0 +1,16 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function email() { return request.auth.token.email; }
+    function isMember() {
+      return request.auth != null && (
+        email() in ['davidrangel01@gmail.com'] ||
+        firestore.exists(/databases/(default)/documents/users/$(email()))
+      );
+    }
+    match /posts/{postId}/{fileName} {
+      allow read: if isMember();
+      allow write: if isMember() && request.resource.size < 200 * 1024 * 1024;
+    }
+  }
+}
