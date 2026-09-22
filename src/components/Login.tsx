@@ -2,7 +2,7 @@
 import { useAuth } from "@/lib/auth";
 
 export default function Login({ denied }: { denied: boolean }) {
-  const { login, logout, user } = useAuth();
+  const { login, logout, user, error } = useAuth();
   return (
     <div className="min-h-screen grid place-items-center grid-bg relative overflow-hidden">
       <div className="absolute -left-40 -top-40 w-[520px] h-[520px] rounded-full bg-brand-600 opacity-40 blur-[120px]" />
@@ -20,6 +20,9 @@ export default function Login({ denied }: { denied: boolean }) {
             A conta <b>{user?.email}</b> não está na lista de acesso. Peça ao administrador para adicionar.
             <button onClick={logout} className="underline ml-2">Trocar de conta</button>
           </div>
+        )}
+        {error && (
+          <div className="mt-4 text-xs rounded-xl border border-red-500/40 bg-red-500/10 p-3 text-red-300 break-words font-mono">{error}</div>
         )}
         <button onClick={login} className="btn btn-primary w-full justify-center mt-6">Entrar com Google</button>
       </div>

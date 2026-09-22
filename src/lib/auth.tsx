@@ -10,12 +10,13 @@ type Ctx = {
   member: Member | null;
   loading: boolean;
   denied: boolean;
+  error: string | null;
   login: () => Promise<void>;
   logout: () => Promise<void>;
 };
 
 const AuthCtx = createContext<Ctx>({
-  user: null, member: null, loading: true, denied: false,
+  user: null, member: null, loading: true, denied: false, error: null,
   login: async () => {}, logout: async () => {},
 });
 
@@ -24,6 +25,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [member, setMember] = useState<Member | null>(null);
   const [loading, setLoading] = useState(true);
   const [denied, setDenied] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     return onAuthStateChanged(auth, async (u) => {
@@ -42,7 +44,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           } else {
             setDenied(true);
           }
-        } catch {
+        } catch (e) {
+          setError(`Falha ao verificar acesso: ${(e as Error).message}`);
           setDenied(true);
         }
       }
@@ -52,8 +55,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthCtx.Provider value={{
-      user, member, loading, denied,
-      login: async () => { await signInWithPopup(auth, googleProvider); },
+      user, member, loading, denied, error,
+      login: async () => {
+        setError(null);
+        try {
+          await signInWithPopup(auth, googleProvider);
+        } catch (e) {
+          const err = e as { code?: string; message?: string };
+          setError(`${err.code || "erro"}: ${err.message || ""}`);
+        }
+      },
       logout: async () => { await signOut(auth); },
     }}>
       {children}
